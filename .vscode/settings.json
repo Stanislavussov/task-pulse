@@ -1,0 +1,60 @@
+{
+    // Exclude files from VSCode watcher to prevent VSCode lagging 
+    "files.watcherExclude": {
+      "**/node_modules/*/**": true,
+      "**/dist/*/**": true,
+      "/vendor/*/**": true,
+      "/**/.*/*/**": true
+    },
+    "git.enabled": true,
+    "git.verboseCommit": true,
+    "git.showProgress": true,
+    /* 
+       * Eslint settings
+       */
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": "explicit" // Lint files on save
+    },
+    "eslint.options": {
+      "extensions": [
+        ".ts",
+        ".tsx"
+      ]
+    },
+    // "eslint.runtime": "node",
+    "eslint.validate": [
+      "javascript",
+      "javascriptreact",
+      "typescript",
+      "typescriptreact"
+    ],
+    "files.exclude": {
+      "**/node_modules": true,
+      "**/dist": true,
+      // "**/.yarn": true,
+      // "**/*.min.js": true,
+    },
+    "editor.formatOnSave": true, // disable VSCode native format on save
+    "editor.minimap.enabled": false,
+    // "eslint.nodePath": ".yarn/sdks", // path to Eslint pnp sources file
+    "eslint.workingDirectories": [
+      "./packages"
+    ],
+    "eslint.execArgv": [
+      "--max-old-space-size=6000" // Max memory of eslint node server (change if ESlint crashes on HEAP out of memory)
+    ],
+    // "eslint.debug": false, // CAN BE DELETED - show ESLint debug info in VSCode console
+    /* 
+       * Typescript settings
+       */
+    // "typescript.tsdk": ".yarn/sdks/typescript/lib", // path to typescript pnp sources
+    "typescript.enablePromptUseWorkspaceTsdk": true,
+    "typescript.tsserver.maxTsServerMemory": 6000, // max memory of typescript node server
+    "typescript.tsserver.log": "verbose", // CAN BE DELETED -> allow tsserver -> can slow down VSCode intellisense
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "search.exclude": {
+      "**/.yarn": true,
+      "**/.pnp.*": true
+    },
+    // "prettier.prettierPath": ".yarn/sdks/prettier/index.cjs"
+  }
