@@ -18,12 +18,12 @@ export function Settings() {
 
 	useInitialData(reset);
 
-	const { isPending, mutate } = useUpdateSettings();
+	const { isPending, updateSettings } = useUpdateSettings();
 
 	const onSubmit: SubmitHandler<TypeUserForm> = data => {
 		const { password, ...rest } = data;
 
-		mutate({
+		updateSettings({
 			...rest,
 			password: password || undefined,
 		});
@@ -44,9 +44,7 @@ export function Settings() {
 							})}
 							extra="mb-4"
 						/>
-
 						<Field id="name" label="Name: " placeholder="Enter name: " {...register("name")} extra="mb-4" />
-
 						<Field
 							id="password"
 							label="Password: "
@@ -56,7 +54,6 @@ export function Settings() {
 							extra="mb-10"
 						/>
 					</div>
-
 					<div>
 						<Field
 							id="workInterval"
@@ -68,7 +65,6 @@ export function Settings() {
 							})}
 							extra="mb-4"
 						/>
-
 						<Field
 							id="breakInterval"
 							label="Break interval (min.): "
@@ -79,7 +75,6 @@ export function Settings() {
 							})}
 							extra="mb-4"
 						/>
-
 						<Field
 							id="intervalsCount"
 							label="Intervals count (max 10): "

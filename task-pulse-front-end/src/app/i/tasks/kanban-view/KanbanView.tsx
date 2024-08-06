@@ -1,11 +1,9 @@
 "use client";
 
 import { DragDropContext } from "@hello-pangea/dnd";
-
 import { COLUMNS } from "../columns.data";
 import { useTaskDnd } from "../hooks/useTaskDnd";
 import { useTasks } from "../hooks/useTasks";
-
 import { KanbanColumn } from "./KanbanColumn";
 import styles from "./KanbanView.module.scss";
 

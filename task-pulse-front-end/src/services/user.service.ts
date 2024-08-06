@@ -1,9 +1,9 @@
-import type { IUser, TypeUserForm } from "@/types/auth.types";
+import type { User, TypeUserForm } from "@/types/auth.types";
 
 import { axiosWithAuth } from "@/api/interceptors";
 
 export interface IProfileResponse {
-	user: IUser;
+	user: User;
 	statistics: {
 		label: string;
 		value: string;

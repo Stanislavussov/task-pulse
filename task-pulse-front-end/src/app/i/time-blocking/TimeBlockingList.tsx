@@ -1,8 +1,7 @@
+import Loader from "@/components/ui/Loader";
 import { DndContext, closestCenter } from "@dnd-kit/core";
 import { SortableContext, verticalListSortingStrategy } from "@dnd-kit/sortable";
-
-import Loader from "@/components/ui/Loader";
-
+import { useMemo } from "react";
 import { TimeBlock } from "./TimeBlock";
 import styles from "./TimeBlocking.module.scss";
 import { calcHoursLeft } from "./calc-hours-left";
@@ -15,7 +14,7 @@ export function TimeBlockingList() {
 
 	if (isLoading) return <Loader />;
 
-	const { hoursLeft } = calcHoursLeft(items);
+	const { hoursLeft } = useMemo(() => calcHoursLeft(items), [items]);
 
 	return (
 		<div>

@@ -4,13 +4,13 @@ import { arrayMove } from "@dnd-kit/sortable";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import type { Dispatch, SetStateAction } from "react";
 
-import type { ITimeBlockResponse } from "@/types/time-block.types";
+import type { TimeBlockResponse } from "@/types/time-block.types";
 
 import { timeBlockService } from "@/services/time-block.service";
 
 export function useTimeBlockDnd(
-	items: ITimeBlockResponse[] | undefined,
-	setItems: Dispatch<SetStateAction<ITimeBlockResponse[] | undefined>>,
+	items: TimeBlockResponse[] | undefined,
+	setItems: Dispatch<SetStateAction<TimeBlockResponse[] | undefined>>,
 ) {
 	const sensors = useSensors(useSensor(PointerSensor), useSensor(KeyboardSensor));
 

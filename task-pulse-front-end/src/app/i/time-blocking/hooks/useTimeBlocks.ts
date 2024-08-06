@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 
-import type { ITimeBlockResponse } from "@/types/time-block.types";
+import type { TimeBlockResponse } from "@/types/time-block.types";
 
 import { timeBlockService } from "@/services/time-block.service";
 
@@ -11,7 +11,7 @@ export const useTimeBlocks = () => {
 		queryFn: () => timeBlockService.getTimeBlocks(),
 	});
 
-	const [items, setItems] = useState<ITimeBlockResponse[] | undefined>(data?.data);
+	const [items, setItems] = useState<TimeBlockResponse[] | undefined>(data?.data);
 
 	useEffect(() => {
 		setItems(data?.data);

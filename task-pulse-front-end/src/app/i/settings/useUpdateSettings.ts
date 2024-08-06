@@ -8,7 +8,7 @@ import { userService } from "@/services/user.service";
 export function useUpdateSettings() {
 	const queryClient = useQueryClient();
 
-	const { mutate, isPending } = useMutation({
+	const { mutate: updateSettings, isPending } = useMutation({
 		mutationKey: ["update profile"],
 		mutationFn: (data: TypeUserForm) => userService.update(data),
 		onSuccess() {
@@ -17,5 +17,5 @@ export function useUpdateSettings() {
 		},
 	});
 
-	return { mutate, isPending };
+	return { updateSettings, isPending };
 }

@@ -1,8 +1,6 @@
 import cn from "clsx";
 import { X } from "lucide-react";
-
 import { Badge } from "@/components/ui/Badge";
-
 import { useOutside } from "@/hooks/useOutside";
 
 export interface IOption {

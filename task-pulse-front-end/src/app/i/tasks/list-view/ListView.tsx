@@ -22,7 +22,6 @@ export function ListView() {
 					<div>Priority</div>
 					<div />
 				</div>
-
 				<div className={styles.parentsWrapper}>
 					{COLUMNS.map(column => (
 						<ListRowParent

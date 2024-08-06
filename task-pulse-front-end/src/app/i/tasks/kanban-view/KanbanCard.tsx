@@ -48,7 +48,6 @@ export function KanbanCard({ item, setItems }: IKanbanCard) {
 				<button type="button" aria-describedby="todo-item">
 					<GripVertical className={styles.grip} />
 				</button>
-
 				<Controller
 					control={control}
 					name="isCompleted"

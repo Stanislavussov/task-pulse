@@ -1,9 +1,9 @@
-export interface IAuthForm {
+export interface AuthForm {
 	email: string;
 	password: string;
 }
 
-export interface IUser {
+export interface User {
 	id: number;
 	name?: string;
 	email: string;
@@ -13,9 +13,9 @@ export interface IUser {
 	intervalsCount?: number;
 }
 
-export interface IAuthResponse {
+export interface AuthResponse {
 	accessToken: string;
-	user: IUser;
+	user: User;
 }
 
-export type TypeUserForm = Omit<IUser, "id"> & { password?: string };
+export type TypeUserForm = Omit<User, "id"> & { password?: string };

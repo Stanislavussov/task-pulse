@@ -16,7 +16,9 @@ export function TasksView() {
 		defaultValue: "list",
 	});
 
-	if (isLoading) return <Loader />;
+	if (isLoading) {
+		return <Loader />;
+	}
 
 	return (
 		<div>

@@ -8,11 +8,15 @@ export function useTaskDnd() {
 	const { updateTask } = useUpdateTask();
 
 	const onDragEnd = (result: DropResult) => {
-		if (!result.destination) return;
+		if (!result.destination) {
+			return;
+		}
 
 		const destinationColumnId = result.destination.droppableId;
 
-		if (destinationColumnId === result.source.droppableId) return;
+		if (destinationColumnId === result.source.droppableId) {
+			return;
+		}
 
 		if (destinationColumnId === "completed") {
 			updateTask({

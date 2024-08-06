@@ -1,50 +1,32 @@
 "use client";
 
-import { useMutation } from "@tanstack/react-query";
-import { useRouter } from "next/navigation";
-import { useState } from "react";
-import type { SubmitHandler } from "react-hook-form";
-import { useForm } from "react-hook-form";
-import { toast } from "sonner";
-
 import { Heading } from "@/components/ui/Heading";
 import { Button } from "@/components/ui/buttons/Button";
 import { Field } from "@/components/ui/fields/Field";
-
-import type { IAuthForm } from "@/types/auth.types";
-
-import { DASHBOARD_PAGES } from "@/config/pages-url.config";
-
-import { authService } from "@/services/auth.service";
+import type { AuthForm } from "@/types/auth.types";
+import { useState } from "react";
+import type { SubmitHandler } from "react-hook-form";
+import { useForm } from "react-hook-form";
+import { useAuth } from "./useAuth";
 
 export function Auth() {
-	const { register, handleSubmit, reset } = useForm<IAuthForm>({
+	const { register, handleSubmit, reset } = useForm<AuthForm>({
 		mode: "onChange",
 	});
 
-	const [isLoginForm, setIsLoginForm] = useState(false);
+	const [isLoading, setIsLoading] = useState(false);
 
-	const { push } = useRouter();
+	const { login } = useAuth({ resetForm: reset, isLoading });
 
-	const { mutate } = useMutation({
-		mutationKey: ["auth"],
-		mutationFn: (data: IAuthForm) => authService.main(isLoginForm ? "login" : "register", data),
-		onSuccess() {
-			toast.success("Successfully login!");
-			reset();
-			push(DASHBOARD_PAGES.HOME);
-		},
-	});
 
-	const onSubmit: SubmitHandler<IAuthForm> = data => {
-		mutate(data);
+	const onSubmit: SubmitHandler<AuthForm> = data => {
+		login(data);
 	};
 
 	return (
 		<div className="flex min-h-screen">
 			<form className="w-1/4 m-auto shadow bg-sidebar rounded-xl p-layout" onSubmit={handleSubmit(onSubmit)}>
 				<Heading title="Auth" />
-
 				<Field
 					id="email"
 					label="Email:"
@@ -55,7 +37,6 @@ export function Auth() {
 						required: "Email is required!",
 					})}
 				/>
-
 				<Field
 					id="password"
 					label="Password: "
@@ -66,10 +47,9 @@ export function Auth() {
 					})}
 					extra="mb-6"
 				/>
-
 				<div className="flex items-center gap-5 justify-center">
-					<Button onClick={() => setIsLoginForm(true)}>Login</Button>
-					<Button onClick={() => setIsLoginForm(false)}>Register</Button>
+					<Button onClick={() => setIsLoading(true)}>Login</Button>
+					<Button onClick={() => setIsLoading(false)}>Register</Button>
 				</div>
 			</form>
 		</div>

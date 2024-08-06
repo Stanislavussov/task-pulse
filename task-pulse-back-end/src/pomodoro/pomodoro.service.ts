@@ -29,7 +29,9 @@ export class PomodoroService {
 	async create(userId: string) {
 		const todaySession = await this.getTodaySession(userId)
 
-		if (todaySession) return todaySession
+		if (todaySession) {
+			return todaySession
+		}
 
 		const user = await this.prisma.user.findUnique({
 			where: {
@@ -40,7 +42,9 @@ export class PomodoroService {
 			}
 		})
 
-		if (!user) throw new NotFoundException('User not found')
+		if (!user) {
+			throw new NotFoundException('User not found')
+		}
 
 		return this.prisma.pomodoroSession.create({
 			data: {

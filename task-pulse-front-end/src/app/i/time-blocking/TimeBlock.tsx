@@ -1,13 +1,13 @@
 import { Edit, GripVertical, Loader, Trash } from "lucide-react";
 import { useFormContext } from "react-hook-form";
 
-import type { ITimeBlockResponse, TypeTimeBlockFormState } from "@/types/time-block.types";
+import type { TimeBlockResponse, TypeTimeBlockFormState } from "@/types/time-block.types";
 
 import styles from "./TimeBlocking.module.scss";
 import { useDeleteTimeBlock } from "./hooks/useDeleteTimeBlock";
 import { useTimeBlockSortable } from "./hooks/useTimeBlockSortable";
 
-export function TimeBlock({ item }: { item: ITimeBlockResponse }) {
+export function TimeBlock({ item }: { item: TimeBlockResponse }) {
 	const { attributes, listeners, setNodeRef, style } = useTimeBlockSortable(item.id);
 	const { reset } = useFormContext<TypeTimeBlockFormState>();
 	const { deleteTimeBlock, isDeletePending } = useDeleteTimeBlock(item.id);

@@ -1,4 +1,4 @@
-import type { ITimeBlockResponse, TypeTimeBlockFormState } from "@/types/time-block.types";
+import type { TimeBlockResponse, TypeTimeBlockFormState } from "@/types/time-block.types";
 
 import { axiosWithAuth } from "@/api/interceptors";
 
@@ -6,7 +6,7 @@ class TimeBlockService {
 	private BASE_URL = "/user/time-blocks";
 
 	async getTimeBlocks() {
-		const response = await axiosWithAuth.get<ITimeBlockResponse[]>(this.BASE_URL);
+		const response = await axiosWithAuth.get<TimeBlockResponse[]>(this.BASE_URL);
 
 		return response;
 	}
