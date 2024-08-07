@@ -1,6 +1,7 @@
 import { getCheckboxColor } from "./checkbox.utils";
 
-const Checkbox = (props: {
+// @FIXME: Refactor!!! :(
+export const Checkbox = (props: {
 	id?: string;
 	extra?: string;
 	color?:
@@ -36,5 +37,3 @@ const Checkbox = (props: {
 		/>
 	);
 };
-
-export default Checkbox;

@@ -1,13 +1,10 @@
 "use client";
 
-import type { SubmitHandler } from "react-hook-form";
-import { useForm } from "react-hook-form";
-
 import { Button } from "@/components/ui/buttons/Button";
 import { Field } from "@/components/ui/fields/Field";
-
 import type { TypeUserForm } from "@/types/auth.types";
-
+import type { SubmitHandler } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { useInitialData } from "./useInitialData";
 import { useUpdateSettings } from "./useUpdateSettings";
 
@@ -87,7 +84,6 @@ export function Settings() {
 						/>
 					</div>
 				</div>
-
 				<Button type="submit" disabled={isPending}>
 					Save
 				</Button>

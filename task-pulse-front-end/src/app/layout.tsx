@@ -33,7 +33,6 @@ export default function RootLayout({
 			<body className={zen.className}>
 				<Providers>
 					{children}
-
 					<Toaster theme="dark" position="bottom-right" duration={1500} />
 				</Providers>
 			</body>

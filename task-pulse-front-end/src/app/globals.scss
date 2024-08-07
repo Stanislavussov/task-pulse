@@ -16,6 +16,7 @@
 	}
 }
 
+
 body {
 	@apply text-base overflow-hidden;
 	font-family: var(--font-zen), sans-serif;
@@ -56,10 +57,10 @@ input:checked.defaultCheckbox::before {
 }
 
 .slide {
-	animation: slide_anim 0.5s;
+	animation: slide_animation 0.5s;
 }
 
-@keyframes slide_anim {
+@keyframes slide_animation {
 	from {
 		transform: translateX(50px);
 		opacity: 0.4;
@@ -72,10 +73,10 @@ input:checked.defaultCheckbox::before {
 }
 
 .animation-opacity {
-	animation: opacity_anim 0.5s;
+	animation: opacity_animation 0.5s;
 }
 
-@keyframes opacity_anim {
+@keyframes opacity_animation {
 	from {
 		opacity: 0;
 	}

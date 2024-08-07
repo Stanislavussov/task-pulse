@@ -1,15 +1,13 @@
+import type { PomodoroRoundResponse } from "@/types/pomodoro.types";
 import cn from "clsx";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-
-import type { IPomodoroRoundResponse } from "@/types/pomodoro.types";
-
 import styles from "./PomodoroRounds.module.scss";
 
 interface IPomodoroRounds {
-	rounds: IPomodoroRoundResponse[] | undefined;
+	rounds: PomodoroRoundResponse[] | undefined;
 	nextRoundHandler: () => void;
 	prevRoundHandler: () => void;
-	activeRound: IPomodoroRoundResponse | undefined;
+	activeRound: PomodoroRoundResponse | undefined;
 }
 
 export function PomodoroRounds({ rounds, nextRoundHandler, prevRoundHandler, activeRound }: IPomodoroRounds) {

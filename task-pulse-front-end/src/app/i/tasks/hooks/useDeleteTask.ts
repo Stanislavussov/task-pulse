@@ -9,9 +9,11 @@ export function useDeleteTask() {
 		mutationKey: ["delete task"],
 		mutationFn: (id: string) => taskService.deleteTask(id),
 		onSuccess() {
-			queryClient.invalidateQueries({
-				queryKey: ["tasks"],
-			});
+			queryClient
+				.invalidateQueries({
+					queryKey: ["tasks"],
+				})
+				.catch(console.error);
 		},
 	});
 

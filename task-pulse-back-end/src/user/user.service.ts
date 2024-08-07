@@ -3,7 +3,6 @@ import { hash } from 'argon2'
 import { AuthDto } from 'src/auth/dto/auth.dto'
 import { PrismaService } from 'src/prisma.service'
 import { UserDto } from './user.dto'
-
 import { startOfDay, subDays } from 'date-fns'
 
 @Injectable()
@@ -30,36 +29,33 @@ export class UserService {
 	}
 
 	async getProfile(id: string) {
-		const profile = await this.getById(id)
+		const [profile, completedTasks, todayTasks, weekTasks] = await Promise.all([
+			this.getById(id),
+			this.prisma.task.count({
+				where: {
+					userId: id,
+					isCompleted: true
+				}
+			}),
+			this.prisma.task.count({
+				where: {
+					userId: id,
+					createdAt: {
+						gte: startOfDay(new Date()).toISOString()
+					}
+				}
+			}),
+			this.prisma.task.count({
+				where: {
+					userId: id,
+					createdAt: {
+						gte: startOfDay(subDays(new Date(), 7)).toISOString()
+					}
+				}
+			})
+		])
 
 		const totalTasks = profile.tasks.length
-		const completedTasks = await this.prisma.task.count({
-			where: {
-				userId: id,
-				isCompleted: true
-			}
-		})
-
-		const todayStart = startOfDay(new Date())
-		const weekStart = startOfDay(subDays(new Date(), 7))
-
-		const todayTasks = await this.prisma.task.count({
-			where: {
-				userId: id,
-				createdAt: {
-					gte: todayStart.toISOString()
-				}
-			}
-		})
-
-		const weekTasks = await this.prisma.task.count({
-			where: {
-				userId: id,
-				createdAt: {
-					gte: weekStart.toISOString()
-				}
-			}
-		})
 
 		// eslint-disable-next-line @typescript-eslint/no-unused-vars
 		const { password, ...rest } = profile

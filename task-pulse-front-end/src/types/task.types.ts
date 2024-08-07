@@ -1,15 +1,16 @@
-import type { IBase } from "./root.types";
+import type { EntityBase } from "./root.types";
 
+// @FIXME: fuj ENUMs
 export enum EnumTaskPriority {
 	low = "low",
 	medium = "medium",
 	high = "high",
 }
 
-export interface ITaskResponse extends IBase {
+export interface TaskResponse extends EntityBase {
 	name: string;
-	priority?: EnumTaskPriority;
 	isCompleted: boolean;
+	priority?: EnumTaskPriority;
 }
 
-export type TypeTaskFormState = Partial<Omit<ITaskResponse, "id" | "updatedAt">>;
+export type TypeTaskFormState = Partial<Omit<TaskResponse, "id" | "updatedAt">>;

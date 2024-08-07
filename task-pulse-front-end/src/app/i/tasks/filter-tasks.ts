@@ -2,14 +2,14 @@ import dayjs from "dayjs";
 import isSameOrAfter from "dayjs/plugin/isSameOrAfter";
 import isSameOrBefore from "dayjs/plugin/isSameOrBefore";
 
-import type { ITaskResponse } from "@/types/task.types";
+import type { TaskResponse } from "@/types/task.types";
 
-import { FILTERS } from "./columns.data";
+import { FILTERS } from "./columns.consts";
 
 dayjs.extend(isSameOrAfter);
 dayjs.extend(isSameOrBefore);
 
-export const filterTasks = (tasks: ITaskResponse[] | undefined, value: string) => {
+export const filterTasks = (tasks: TaskResponse[] | undefined, value: string) => {
 	switch (value) {
 		case "today":
 			return tasks?.filter(item => dayjs(item.createdAt).isSame(FILTERS.today, "day") && !item.isCompleted);

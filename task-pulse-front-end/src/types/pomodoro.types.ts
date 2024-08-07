@@ -1,15 +1,15 @@
-import type { IBase } from "./root.types";
+import type { EntityBase } from "./root.types";
 
-export interface IPomodoroRoundResponse extends IBase {
+export interface PomodoroRoundResponse extends EntityBase {
 	isCompleted?: boolean;
 	totalSeconds: number;
 }
 
-export interface IPomodoroSessionResponse extends IBase {
+export interface PomodoroSessionResponse extends EntityBase {
 	isCompleted?: boolean;
-	rounds?: IPomodoroRoundResponse[];
+	rounds?: PomodoroRoundResponse[];
 }
 
-export type TypePomodoroSessionState = Partial<Omit<IPomodoroSessionResponse, "id" | "createdAt" | "updatedAt">>;
+export type TypePomodoroSessionState = Partial<Omit<PomodoroSessionResponse, "id" | "createdAt" | "updatedAt">>;
 
-export type TypePomodoroRoundState = Partial<Omit<IPomodoroRoundResponse, "id" | "createdAt" | "updatedAt">>;
+export type TypePomodoroRoundState = Partial<Omit<PomodoroRoundResponse, "id" | "createdAt" | "updatedAt">>;

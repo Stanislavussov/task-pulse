@@ -1,19 +1,14 @@
 import { useEffect, useState } from "react";
-
-import type { IPomodoroRoundResponse } from "@/types/pomodoro.types";
-
-import type { ITimerState } from "../timer.types";
-
+import type { PomodoroRoundResponse } from "@/types/pomodoro.types";
+import type { TimerState } from "../timer.types";
 import { useLoadSettings } from "./useLoadSettings";
 
-export function useTimer(): ITimerState {
+export function useTimer(): TimerState {
 	const { breakInterval, workInterval } = useLoadSettings();
-
 	const [isRunning, setIsRunning] = useState(false);
 	const [isBreakTime, setIsBreakTime] = useState(false);
-
 	const [secondsLeft, setSecondsLeft] = useState(workInterval * 60);
-	const [activeRound, setActiveRound] = useState<IPomodoroRoundResponse>();
+	const [activeRound, setActiveRound] = useState<PomodoroRoundResponse>();
 
 	useEffect(() => {
 		let interval: NodeJS.Timeout | null = null;
@@ -27,12 +22,16 @@ export function useTimer(): ITimerState {
 		}
 
 		return () => {
-			if (interval) clearInterval(interval);
+			if (interval) {
+				clearInterval(interval);
+			}
 		};
 	}, [isRunning, secondsLeft, workInterval, activeRound]);
 
 	useEffect(() => {
-		if (secondsLeft > 0) return;
+		if (secondsLeft > 0) {
+			return;
+		}
 
 		// Switching the mode and setting a new time in one operation
 		setIsBreakTime(!isBreakTime);

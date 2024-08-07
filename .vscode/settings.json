@@ -56,5 +56,8 @@
       "**/.yarn": true,
       "**/.pnp.*": true
     },
+    "cSpell.words": [
+      "Pomodoro"
+    ],
     // "prettier.prettierPath": ".yarn/sdks/prettier/index.cjs"
   }

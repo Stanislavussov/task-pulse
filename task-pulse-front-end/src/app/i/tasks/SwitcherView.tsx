@@ -2,18 +2,18 @@
 
 import cn from "clsx";
 import { Kanban, ListTodo } from "lucide-react";
-
 import type { TypeView } from "./TasksView";
 
-interface ISwitcherView {
+interface ViewSwitcher {
 	type: TypeView;
 	setType: (value: TypeView) => void;
 }
 
-export function SwitcherView({ setType, type }: ISwitcherView) {
+export function ViewSwitcher({ setType, type }: ViewSwitcher) {
 	return (
 		<div className="flex items-center gap-4 mb-5">
 			<button
+				type="button"
 				className={cn("flex items-center gap-1", {
 					"opacity-40": type === "kanban",
 				})}
@@ -23,6 +23,7 @@ export function SwitcherView({ setType, type }: ISwitcherView) {
 				List
 			</button>
 			<button
+				type="button"
 				className={cn("flex items-center gap-1", {
 					"opacity-40": type === "list",
 				})}

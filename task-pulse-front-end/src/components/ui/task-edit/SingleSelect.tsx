@@ -1,7 +1,7 @@
-import cn from "clsx";
-import { X } from "lucide-react";
 import { Badge } from "@/components/ui/Badge";
 import { useOutside } from "@/hooks/useOutside";
+import cn from "clsx";
+import { X } from "lucide-react";
 
 export interface IOption {
 	label: string;
@@ -20,16 +20,10 @@ export function SingleSelect({ data, onChange, value, isColorSelect }: ISingleSe
 	const getValue = () => data.find(item => item.value === value)?.value;
 
 	return (
-		<div
-			className={cn("relative min-w-36", {
-				"w-max": isColorSelect,
-			})}
-			ref={ref}
-		>
+		<div ref={ref} className={cn("relative min-w-36", { "w-max": isColorSelect })}>
 			<button
 				type="button"
-				onClick={e => {
-					e.preventDefault();
+				onClick={() => {
 					setIsShow(!isShow);
 				}}
 			>
@@ -48,9 +42,8 @@ export function SingleSelect({ data, onChange, value, isColorSelect }: ISingleSe
 			{value && (
 				<button
 					type="button"
-					className="absolute top-0 right-0 opacity-30 hover:opacity-100 transition-opacity"
-					onClick={e => {
-						e.preventDefault();
+					className="absolute bottom-3 right-22 opacity-40 hover:opacity-100"
+					onClick={() => {
 						onChange("");
 					}}
 				>
@@ -68,19 +61,12 @@ export function SingleSelect({ data, onChange, value, isColorSelect }: ISingleSe
 						<button
 							type="button"
 							key={item.value}
-							onClick={e => {
-								e.preventDefault();
+							onClick={() => {
 								onChange(item.value);
 								setIsShow(false);
 							}}
 							className="block mb-4 last:mb-0 capitalize rounded-lg"
-							style={
-								isColorSelect
-									? {
-											backgroundColor: item.value,
-										}
-									: {}
-							}
+							style={isColorSelect ? { backgroundColor: item.value } : {}}
 						>
 							<Badge variant={item.value}>{item.label}</Badge>
 						</button>

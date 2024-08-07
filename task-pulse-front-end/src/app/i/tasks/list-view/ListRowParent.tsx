@@ -1,11 +1,8 @@
+import type { TaskResponse } from "@/types/task.types";
 import { Draggable, Droppable } from "@hello-pangea/dnd";
 import type { Dispatch, SetStateAction } from "react";
-
-import type { ITaskResponse } from "@/types/task.types";
-
-import { FILTERS } from "../columns.data";
+import { FILTERS } from "../columns.consts";
 import { filterTasks } from "../filter-tasks";
-
 import { ListAddRowInput } from "./ListAddRowInput";
 import { ListRow } from "./ListRow";
 import styles from "./ListView.module.scss";
@@ -13,8 +10,8 @@ import styles from "./ListView.module.scss";
 interface IListRowParent {
 	value: string;
 	label: string;
-	items: ITaskResponse[] | undefined;
-	setItems: Dispatch<SetStateAction<ITaskResponse[] | undefined>>;
+	items: TaskResponse[] | undefined;
+	setItems: Dispatch<SetStateAction<TaskResponse[] | undefined>>;
 }
 
 export function ListRowParent({ value, items, label, setItems }: IListRowParent) {
@@ -25,7 +22,6 @@ export function ListRowParent({ value, items, label, setItems }: IListRowParent)
 					<div className={styles.colHeading}>
 						<div className="w-full">{label}</div>
 					</div>
-
 					{filterTasks(items, value)?.map((item, index) => (
 						<Draggable key={item.id} draggableId={item.id} index={index}>
 							{p => (
@@ -35,9 +31,7 @@ export function ListRowParent({ value, items, label, setItems }: IListRowParent)
 							)}
 						</Draggable>
 					))}
-
 					{provided.placeholder}
-
 					{value !== "completed" && !items?.some(item => !item.id) && (
 						<ListAddRowInput
 							setItems={setItems}

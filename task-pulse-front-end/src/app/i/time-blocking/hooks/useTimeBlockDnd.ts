@@ -1,12 +1,10 @@
+import { timeBlockService } from "@/services/time-block.service";
+import type { TimeBlockResponse } from "@/types/time-block.types";
 import type { DragEndEvent } from "@dnd-kit/core";
 import { KeyboardSensor, PointerSensor, useSensor, useSensors } from "@dnd-kit/core";
 import { arrayMove } from "@dnd-kit/sortable";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import type { Dispatch, SetStateAction } from "react";
-
-import type { TimeBlockResponse } from "@/types/time-block.types";
-
-import { timeBlockService } from "@/services/time-block.service";
 
 export function useTimeBlockDnd(
 	items: TimeBlockResponse[] | undefined,

@@ -1,10 +1,10 @@
 import { type Dispatch, type SetStateAction } from "react";
 
-import type { ITaskResponse } from "@/types/task.types";
+import type { TaskResponse } from "@/types/task.types";
 
 interface IKanbanAddCardInput {
 	filterDate?: string;
-	setItems: Dispatch<SetStateAction<ITaskResponse[] | undefined>>;
+	setItems: Dispatch<SetStateAction<TaskResponse[] | undefined>>;
 }
 
 export function KanbanAddCardInput({ setItems, filterDate }: IKanbanAddCardInput) {

@@ -1,14 +1,12 @@
+import { useOutside } from "@/hooks/useOutside";
 import cn from "clsx";
 import dayjs from "dayjs";
 import LocalizedFormat from "dayjs/plugin/localizedFormat";
-import { X } from "lucide-react";
 import { useState } from "react";
 import { DayPicker, type SelectSingleEventHandler } from "react-day-picker";
 import "react-day-picker/dist/style.css";
-
-import { useOutside } from "@/hooks/useOutside";
-
 import "./DatePicker.scss";
+import { X } from "lucide-react";
 import { formatCaption } from "./DatePickerCaption";
 
 dayjs.extend(LocalizedFormat);
@@ -31,20 +29,22 @@ export function DatePicker({ onChange, value, position = "right" }: IDatePicker)
 		if (ISOdate) {
 			onChange(ISOdate);
 			setIsShow(false);
-		} else {
-			onChange("");
+
+			return;
 		}
+
+		onChange("");
 	};
 
 	return (
-		<div className="relative" ref={ref}>
-			<button type="button" onClick={() => setIsShow(!isShow)}>
+		<div className="relativ" ref={ref}>
+			<button className="text-white" type="button" onClick={() => setIsShow(!isShow)}>
 				{value ? dayjs(value).format("LL") : "Click for select"}
 			</button>
 			{value && (
 				<button
 					type="button"
-					className="absolute -top-2 -right-4 opacity-30 hover:opacity-100 transition-opacity"
+					className="absolute opacity-30 hover:opacity-100 transition-opacity"
 					onClick={() => onChange("")}
 				>
 					<X size={14} />

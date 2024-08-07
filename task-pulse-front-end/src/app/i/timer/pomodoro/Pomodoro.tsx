@@ -1,8 +1,7 @@
 "use client";
 
-import { Loader, Pause, Play, RefreshCcw } from "lucide-react";
 import { Button } from "@/components/ui/buttons/Button";
-
+import { Loader, Pause, Play, RefreshCcw } from "lucide-react";
 import { formatTime } from "../format-time";
 import { useCreateSession } from "../hooks/useCreateSession";
 import { useDeleteSession } from "../hooks/useDeleteSession";
@@ -13,9 +12,9 @@ import { PomodoroRounds } from "../rounds/PomodoroRounds";
 
 export function Pomodoro() {
 	const timerState = useTimer();
-	const { isLoading, sessionsResponse, workInterval } = useTodaySession(timerState);
+	const { isLoading, session, workInterval } = useTodaySession(timerState);
 
-	const rounds = sessionsResponse?.data.rounds;
+	const rounds = session?.rounds;
 	const actions = useTimerActions({ ...timerState, rounds });
 
 	const { isPending, mutate } = useCreateSession();
@@ -29,7 +28,7 @@ export function Pomodoro() {
 		);
 	}
 
-	if (sessionsResponse?.data) {
+	if (session) {
 		return (
 			<div className="relative w-80 text-center">
 				<div className="text-7xl font-semibold">{formatTime(timerState.secondsLeft)}</div>
@@ -51,7 +50,7 @@ export function Pomodoro() {
 					type="button"
 					onClick={() => {
 						timerState.setIsRunning(false);
-						deleteSession(sessionsResponse.data.id);
+						deleteSession(session.id);
 					}}
 					className="absolute top-0 right-0 opacity-40 hover:opacity-90 transition-opacity"
 					disabled={isDeletePending}

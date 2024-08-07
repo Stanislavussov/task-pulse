@@ -1,23 +1,19 @@
+import { Checkbox } from "@/components/ui/checkbox";
+import { TransparentField } from "@/components/ui/fields/TransparentField";
+import { SingleSelect } from "@/components/ui/task-edit/SingleSelect";
+import { DatePicker } from "@/components/ui/task-edit/date-picker/DatePicker";
+import type { TaskResponse, TypeTaskFormState } from "@/types/task.types";
 import cn from "clsx";
 import { GripVertical, Loader, Trash } from "lucide-react";
 import type { Dispatch, SetStateAction } from "react";
 import { Controller, useForm } from "react-hook-form";
-
-import Checkbox from "@/components/ui/checkbox";
-import { TransparentField } from "@/components/ui/fields/TransparentField";
-import { SingleSelect } from "@/components/ui/task-edit/SingleSelect";
-import { DatePicker } from "@/components/ui/task-edit/date-picker/DatePicker";
-
-import type { ITaskResponse, TypeTaskFormState } from "@/types/task.types";
-
 import { useDeleteTask } from "../hooks/useDeleteTask";
 import { useTaskDebounce } from "../hooks/useTaskDebounce";
-
 import styles from "./KanbanView.module.scss";
 
 interface IKanbanCard {
-	item: ITaskResponse;
-	setItems: Dispatch<SetStateAction<ITaskResponse[] | undefined>>;
+	item: TaskResponse;
+	setItems: Dispatch<SetStateAction<TaskResponse[] | undefined>>;
 }
 
 export function KanbanCard({ item, setItems }: IKanbanCard) {
@@ -53,10 +49,8 @@ export function KanbanCard({ item, setItems }: IKanbanCard) {
 					name="isCompleted"
 					render={({ field: { value, onChange } }) => <Checkbox onChange={onChange} checked={value} />}
 				/>
-
 				<TransparentField {...register("name")} />
 			</div>
-
 			<div className={styles.cardBody}>
 				<Controller
 					control={control}
@@ -65,7 +59,6 @@ export function KanbanCard({ item, setItems }: IKanbanCard) {
 						<DatePicker onChange={onChange} value={value || ""} position="left" />
 					)}
 				/>
-
 				<Controller
 					control={control}
 					name="priority"
@@ -81,7 +74,6 @@ export function KanbanCard({ item, setItems }: IKanbanCard) {
 					)}
 				/>
 			</div>
-
 			<div className={styles.cardActions}>
 				<button
 					type="button"

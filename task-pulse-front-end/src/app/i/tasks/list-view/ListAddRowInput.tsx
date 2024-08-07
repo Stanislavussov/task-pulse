@@ -1,18 +1,20 @@
 import { type Dispatch, type SetStateAction } from "react";
 
-import type { ITaskResponse } from "@/types/task.types";
+import type { TaskResponse } from "@/types/task.types";
 
 import styles from "./ListView.module.scss";
 
 interface IListAddRowInput {
 	filterDate?: string;
-	setItems: Dispatch<SetStateAction<ITaskResponse[] | undefined>>;
+	setItems: Dispatch<SetStateAction<TaskResponse[] | undefined>>;
 }
 
 export function ListAddRowInput({ setItems, filterDate }: IListAddRowInput) {
 	const addRow = () => {
 		setItems(prev => {
-			if (!prev) return;
+			if (!prev) {
+				return [];
+			}
 
 			return [
 				...prev,
@@ -28,7 +30,7 @@ export function ListAddRowInput({ setItems, filterDate }: IListAddRowInput) {
 
 	return (
 		<div className={styles.addRow}>
-			<button onClick={addRow} className="italic opacity-40 text-sm">
+			<button type="button" onClick={addRow} className="italic opacity-40 text-sm">
 				Add task...
 			</button>
 		</div>

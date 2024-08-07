@@ -1,6 +1,6 @@
-import type { IBase } from "./root.types";
+import type { EntityBase } from "./root.types";
 
-export interface TimeBlockResponse extends IBase {
+export interface TimeBlockResponse extends EntityBase {
 	name: string;
 	color?: string;
 	duration: number;

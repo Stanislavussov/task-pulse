@@ -11,10 +11,11 @@ import { useTimeBlocks } from "./hooks/useTimeBlocks";
 export function TimeBlockingList() {
 	const { items, setItems, isLoading } = useTimeBlocks();
 	const { handleDragEnd, sensors } = useTimeBlockDnd(items, setItems);
-
-	if (isLoading) return <Loader />;
-
 	const { hoursLeft } = useMemo(() => calcHoursLeft(items), [items]);
+
+	if (isLoading) {
+		return <Loader />;
+	}
 
 	return (
 		<div>
@@ -22,7 +23,7 @@ export function TimeBlockingList() {
 				<div className={styles.list}>
 					<SortableContext items={items || []} strategy={verticalListSortingStrategy}>
 						{items?.length ? (
-							items?.map(item => <TimeBlock key={item.id} item={item} />)
+							items.map(item => <TimeBlock key={item.id} item={item} />)
 						) : (
 							<div>Add the first time-block on the right form</div>
 						)}

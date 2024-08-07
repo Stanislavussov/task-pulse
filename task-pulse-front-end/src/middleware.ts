@@ -1,6 +1,5 @@
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
-
 import { DASHBOARD_PAGES } from "./config/pages-url.config";
 import { EnumTokens } from "./services/auth-token.service";
 

@@ -30,14 +30,8 @@ axiosWithAuth.interceptors.response.use(
 	config => config,
 	async error => {
 		const originalRequest = error.config;
-
-		if (
-			(error?.response?.status === 401 ||
-				errorCatch(error) === "jwt expired" ||
-				errorCatch(error) === "jwt must be provided") &&
-			error.config &&
-			!error.config._isRetry
-		) {
+		// @FIXME: Create constant for status codes
+		if (error?.response?.status === 401 && error.config && !error.config._isRetry) {
 			originalRequest._isRetry = true;
 
 			try {
@@ -45,6 +39,7 @@ axiosWithAuth.interceptors.response.use(
 
 				return axiosWithAuth.request(originalRequest);
 			} catch (err) {
+				// @FIXME: Improve jwt expired error handling
 				if (errorCatch(err) === "jwt expired") {
 					removeFromStorage();
 				}

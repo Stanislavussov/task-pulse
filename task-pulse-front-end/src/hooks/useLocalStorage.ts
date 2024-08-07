@@ -1,7 +1,7 @@
 import type { Dispatch, SetStateAction } from "react";
 import { useEffect, useRef, useState } from "react";
 
-interface IUseLocalStorage<T> {
+interface UseLocalStorageParams<T> {
 	key: string;
 	defaultValue: T;
 }
@@ -9,7 +9,7 @@ interface IUseLocalStorage<T> {
 export function useLocalStorage<T>({
 	defaultValue,
 	key,
-}: IUseLocalStorage<T>): [T, Dispatch<SetStateAction<T>>, boolean] {
+}: UseLocalStorageParams<T>): [T, Dispatch<SetStateAction<T>>, boolean] {
 	const [isLoading, setIsLoading] = useState(true);
 
 	const isMounted = useRef(false);

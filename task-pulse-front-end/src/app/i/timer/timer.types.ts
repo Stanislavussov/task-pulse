@@ -1,13 +1,13 @@
 import type { Dispatch, SetStateAction } from "react";
 
-import type { IPomodoroRoundResponse } from "@/types/pomodoro.types";
+import type { PomodoroRoundResponse } from "@/types/pomodoro.types";
 
-export interface ITimerState {
+export interface TimerState {
 	isRunning: boolean;
 	secondsLeft: number;
-	activeRound: IPomodoroRoundResponse | undefined;
+	activeRound: PomodoroRoundResponse | undefined;
 
 	setIsRunning: Dispatch<SetStateAction<boolean>>;
 	setSecondsLeft: Dispatch<SetStateAction<number>>;
-	setActiveRound: Dispatch<SetStateAction<IPomodoroRoundResponse | undefined>>;
+	setActiveRound: Dispatch<SetStateAction<PomodoroRoundResponse | undefined>>;
 }

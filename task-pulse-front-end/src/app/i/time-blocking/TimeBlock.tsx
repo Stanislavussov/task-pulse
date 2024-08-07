@@ -1,8 +1,6 @@
+import type { TimeBlockResponse, TypeTimeBlockFormState } from "@/types/time-block.types";
 import { Edit, GripVertical, Loader, Trash } from "lucide-react";
 import { useFormContext } from "react-hook-form";
-
-import type { TimeBlockResponse, TypeTimeBlockFormState } from "@/types/time-block.types";
-
 import styles from "./TimeBlocking.module.scss";
 import { useDeleteTimeBlock } from "./hooks/useDeleteTimeBlock";
 import { useTimeBlockSortable } from "./hooks/useTimeBlockSortable";
@@ -29,7 +27,6 @@ export function TimeBlock({ item }: { item: TimeBlockResponse }) {
 						{item.name} <i className="text-xs opacity-50">({item.duration} min.)</i>
 					</div>
 				</div>
-
 				<div className={styles.actions}>
 					<button
 						type="button"

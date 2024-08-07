@@ -16,7 +16,7 @@ export const FILTERS: Record<string, Dayjs> = {
 	later: dayjs().add(2, "week").startOf("day"),
 };
 
-export const COLUMNS = [
+export const TASK_COLUMNS = [
 	{
 		label: "Today",
 		value: "today",

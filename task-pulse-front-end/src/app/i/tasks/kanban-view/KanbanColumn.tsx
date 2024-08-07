@@ -1,7 +1,7 @@
 import { Draggable, Droppable } from "@hello-pangea/dnd";
 import type { Dispatch, SetStateAction } from "react";
-import type { ITaskResponse } from "@/types/task.types";
-import { FILTERS } from "../columns.data";
+import type { TaskResponse } from "@/types/task.types";
+import { FILTERS } from "../columns.consts";
 import { filterTasks } from "../filter-tasks";
 import { KanbanAddCardInput } from "./KanbanAddCardInput";
 import { KanbanCard } from "./KanbanCard";
@@ -10,8 +10,8 @@ import styles from "./KanbanView.module.scss";
 interface IKanbanColumn {
 	value: string;
 	label: string;
-	items: ITaskResponse[] | undefined;
-	setItems: Dispatch<SetStateAction<ITaskResponse[] | undefined>>;
+	items: TaskResponse[] | undefined;
+	setItems: Dispatch<SetStateAction<TaskResponse[] | undefined>>;
 }
 
 export function KanbanColumn({ value, items, label, setItems }: IKanbanColumn) {

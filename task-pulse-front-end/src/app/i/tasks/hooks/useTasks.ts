@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 
-import type { ITaskResponse } from "@/types/task.types";
+import type { TaskResponse } from "@/types/task.types";
 
 import { taskService } from "@/services/task.service";
 
@@ -11,7 +11,7 @@ export function useTasks() {
 		queryFn: () => taskService.getTasks(),
 	});
 
-	const [items, setItems] = useState<ITaskResponse[] | undefined>(data?.data);
+	const [items, setItems] = useState<TaskResponse[] | undefined>(data?.data);
 
 	useEffect(() => {
 		setItems(data?.data);

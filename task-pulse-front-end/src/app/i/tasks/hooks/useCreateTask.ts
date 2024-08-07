@@ -11,9 +11,11 @@ export function useCreateTask() {
 		mutationKey: ["create task"],
 		mutationFn: (data: TypeTaskFormState) => taskService.createTask(data),
 		onSuccess() {
-			queryClient.invalidateQueries({
-				queryKey: ["tasks"],
-			});
+			queryClient
+				.invalidateQueries({
+					queryKey: ["tasks"],
+				})
+				.catch(console.error);
 		},
 	});
 

@@ -1,6 +1,6 @@
 import type { DropResult } from "@hello-pangea/dnd";
 
-import { FILTERS } from "../columns.data";
+import { FILTERS } from "../columns.consts";
 
 import { useUpdateTask } from "./useUpdateTask";
 

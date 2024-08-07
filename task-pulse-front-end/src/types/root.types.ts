@@ -1,4 +1,4 @@
-export interface IBase {
+export interface EntityBase {
 	id: string;
 	createdAt?: string;
 	updatedAt?: string;

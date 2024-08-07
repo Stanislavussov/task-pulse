@@ -7,13 +7,14 @@ import { useState } from "react";
 
 export function Providers({ children }: PropsWithChildren) {
 	const [client] = useState(
-		new QueryClient({
-			defaultOptions: {
-				queries: {
-					refetchOnWindowFocus: false,
+		() =>
+			new QueryClient({
+				defaultOptions: {
+					queries: {
+						refetchOnWindowFocus: false,
+					},
 				},
-			},
-		}),
+			}),
 	);
 
 	return (

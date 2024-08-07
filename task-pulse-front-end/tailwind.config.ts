@@ -1,9 +1,9 @@
 import type { Config } from "tailwindcss";
 
-import { COLORS } from "./src/constants/color.constants";
+import { THEME_COLORS } from "./src/constants/color.constants";
 
 const config: Config = {
-	darkMode: "class",
+	// darkMode: "selector",
 	mode: "jit",
 	content: [
 		"./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -12,7 +12,7 @@ const config: Config = {
 	],
 	theme: {
 		extend: {
-			colors: COLORS,
+			colors: THEME_COLORS,
 			spacing: {
 				0.5: "0.12rem",
 				layout: "1.4rem",

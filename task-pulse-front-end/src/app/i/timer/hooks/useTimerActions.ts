@@ -1,12 +1,12 @@
-import type { IPomodoroRoundResponse } from "@/types/pomodoro.types";
+import type { PomodoroRoundResponse } from "@/types/pomodoro.types";
 
-import type { ITimerState } from "../timer.types";
+import type { TimerState } from "../timer.types";
 
 import { useLoadSettings } from "./useLoadSettings";
 import { useUpdateRound } from "./useUpdateRound";
 
-type TypeUseTimerActions = ITimerState & {
-	rounds: IPomodoroRoundResponse[] | undefined;
+type TypeUseTimerActions = TimerState & {
+	rounds: PomodoroRoundResponse[] | undefined;
 };
 
 export function useTimerActions({
@@ -49,7 +49,6 @@ export function useTimerActions({
 	};
 
 	const prevRoundHandler = () => {
-		// ES2023
 		const lastCompletedRound = rounds?.findLast(round => round.isCompleted);
 		if (!lastCompletedRound?.id) return;
 

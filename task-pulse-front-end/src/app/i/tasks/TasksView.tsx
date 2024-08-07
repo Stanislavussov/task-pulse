@@ -4,7 +4,7 @@ import Loader from "@/components/ui/Loader";
 
 import { useLocalStorage } from "@/hooks/useLocalStorage";
 
-import { SwitcherView } from "./SwitcherView";
+import { ViewSwitcher } from "./SwitcherView";
 import { KanbanView } from "./kanban-view/KanbanView";
 import { ListView } from "./list-view/ListView";
 
@@ -22,7 +22,7 @@ export function TasksView() {
 
 	return (
 		<div>
-			<SwitcherView setType={setType} type={type} />
+			<ViewSwitcher setType={setType} type={type} />
 			{type === "list" ? <ListView /> : <KanbanView />}
 		</div>
 	);
